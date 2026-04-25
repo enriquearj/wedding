@@ -4,9 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jessica &amp; Alexander – Boda</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Luxurious+Script&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Imperial+Script&family=Lavishly+Yours&family=Luxurious+Script&family=Monsieur+La+Doulaise&family=Pinyon+Script&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -107,31 +111,45 @@
     .bible-verse {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: clamp(1.30rem, 2.8vw, 0.95rem);
+      font-size: clamp(1.80rem, 2.8vw, 0.95rem);
       line-height: 1.65;
       color: var(--text-mid);
       margin-bottom: 28px;
     }
-    .couple-names .name-1 { align-self: flex-start; }
+    .couple-names {
+      font-family: "Luxurious Script", cursive;
+      font-size: clamp(7rem, 11vw, 5rem);
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 clamp(80px, 6vw, 18px);
+      color: var(--green-dark);
+    }
+    .couple-names .name-1 { align-self: flex-start; 
+      display: block;
+      line-height: 0.50;
+      margin: 12px 0 10px;}
     .couple-names .amp {
       display: block;
-      font-size: clamp(2.2rem, 8.5vw, 3.8rem);
+
       line-height: 1.05;
+      margin: 12px 0 12px;
       align-self: center;
     }
-    .couple-names .name-2 { align-self: flex-end; }
+    .couple-names .name-2 { align-self: flex-end; 
+         display: block;
+      line-height: 1.05;
+      align-self: right;
+    }
+
     .music-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.82rem, 2.8vw, 0.95rem);
+      font-size: clamp(1.30rem, 2.8vw, 0.95rem);
       color: var(--text-mid);
       margin: 26px 0 12px;
     }
-    .music-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.82rem, 2.8vw, 0.95rem);
-      color: var(--text-mid);
-      margin: 26px 0 12px;
-    }
+  
     .player-bar {
       background: white;
       border-radius: 10px;
@@ -194,16 +212,16 @@
     }
     .invite-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.30rem, 3vw, 1rem);
+      font-size: clamp(1.40rem, 3vw, 1rem);
       line-height: 1.7;
       color: var(--text-mid);
       margin-bottom: 30px;
     }
     .date-month {
-      font-size: clamp(0.58rem, 1.8vw, 0.65rem);
+      font-size: clamp(1.10rem, 1.8vw, 0.65rem);
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--text-mid);
+      color: var(--green-dark);
       margin-bottom: 4px;
     }
     .date-row {
@@ -213,17 +231,17 @@
       gap: clamp(8px, 3vw, 14px);
       margin-bottom: 30px;
     }
-    .date-vline { width: 1px; height: 58px; background: var(--text-mid); opacity: 0.35; }
-    .date-day-name { font-size: clamp(0.55rem, 1.8vw, 0.62rem); letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mid); }
+    .date-vline { width: 1px; height: 58px; background: var(--green-dark); opacity: 0.35; }
+    .date-day-name { font-size: clamp(1.10rem, 1.8vw, 0.62rem); letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-dark); }
     .date-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.8rem, 16vw, 7.5rem);
+      font-family: "Imperial Script", cursive;
+      font-size: clamp(1.1rem, 16vw, 7.5rem);
       font-weight: 300;
-      color: var(--text-dark);
+      color: var(--green-dark);
       line-height: 1;
     }
-    .date-year-label { font-size: clamp(0.55rem, 1.8vw, 0.62rem); letter-spacing: 0.18em; color: var(--text-mid); }
-    .countdown-title { font-size: clamp(0.55rem, 1.8vw, 0.62rem); letter-spacing: 0.26em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 12px; }
+    .date-year-label { font-size: clamp(1.20rem, 1.8vw, 0.62rem); letter-spacing: 0.18em; color: var(--green-dark); }
+    .countdown-title { font-size: clamp(1.10rem, 1.8vw, 0.62rem); letter-spacing: 0.26em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 12px; }
     .countdown-row {
       display: flex;
       justify-content: center;
@@ -233,23 +251,23 @@
     }
     .cd-unit { text-align: center; }
     .cd-num {
-      font-family: 'Cormorant Garamond', serif;
+       font-family: "Google Sans Flex", sans-serif;
       font-size: clamp(2.2rem, 10vw, 5rem);
       font-weight: 300;
-      color: var(--text-dark);
+      color: var(--green-dark);
       line-height: 1;
       display: block;
     }
     .cd-sep {
-      font-family: 'Cormorant Garamond', serif;
+       font-family: "Google Sans Flex", sans-serif;
       font-size: clamp(2.2rem, 10vw, 5rem);
       font-weight: 300;
-      color: var(--text-dark);
+      color: var(--green-dark);
       line-height: 1;
       padding-bottom: 20px;
     }
     .cd-sub {
-      font-size: clamp(0.5rem, 1.6vw, 0.58rem);
+      font-size: clamp(0.8rem, 1.6vw, 0.58rem);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-mid);
@@ -274,7 +292,7 @@
     .loc-block { text-align: center; padding: 28px 0 10px; }
     .loc-icon { margin-bottom: 12px; }
     .loc-icon svg { width: 38px; height: 38px; stroke: var(--green-mid); fill: none; stroke-width: 1.4; }
-    .loc-title { font-weight: bold; font-size: clamp(0.8rem, 2vw, 0.68rem); letter-spacing: 0.26em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 8px; }
+    .loc-title { font-weight: bold; font-size: clamp(1.0rem, 2vw, 0.68rem); letter-spacing: 0.26em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 8px; }
     .loc-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 3.5vw, 1.2rem); color: var(--text-dark); margin-bottom: 4px; }
     .loc-addr { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(0.8rem, 2.8vw, 0.92rem); color: var(--text-mid); margin-bottom: 16px; }
     .btn-green {
@@ -283,7 +301,7 @@
       background: var(--green-dark);
       color: white;
       border-radius: 50px;
-      font-size: clamp(0.7rem, 2.2vw, 0.78rem);
+      font-size: clamp(0.9rem, 2.2vw, 0.78rem);
       letter-spacing: 0.04em;
       text-decoration: none;
       border: none;
@@ -309,7 +327,7 @@
     }
     .dc-type { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.95rem, 3vw, 1.1rem); color: var(--text-mid); margin-bottom: 20px; }
     .dc-figures { display: flex; justify-content: center; align-items: flex-end; gap: 12px; margin-bottom: 32px; }
-    .gifts-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.82rem, 2.8vw, 0.95rem); line-height: 1.65; color: var(--text-mid); margin-bottom: 18px; }
+    .gifts-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 2.8vw, 0.95rem); line-height: 1.65; color: var(--text-mid); margin-bottom: 18px; }
     .transfer-label { font-size: clamp(0.6rem, 2vw, 0.68rem); letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 14px; }
     .qr-box { width: 130px; height: 130px; background: #1e1e1e; border-radius: 6px; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; }
     .mc-logo { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 12px; }
@@ -473,12 +491,13 @@
       que no lo separe el hombre".<br>
       (Mateo 19:6)
     </p>
-      <div class="inner">
-      <div class="couple-names">
+    <div class="inner">
+    <div class="couple-names">
       <span class="name-1">Jessica</span>
       <span class="amp">&amp;</span>
       <span class="name-2">Alexander</span>
-    </div></div>
+    </div>
+  </div>
     <p class="music-label">Dale play a nuestra canción</p>
    <audio id="weddingAudio" loop preload="metadata">
       <source src="Musica/cancion.mp3" type="audio/mpeg" />
@@ -510,9 +529,7 @@
       </div>
     </div>
   </div>
-  
-  <img class="leaf bl" src="img/leaves.png" alt="" />
-
+ <img class="leaf bl" src="img/leaves.png" alt="" />
 </section>
 
 
@@ -520,6 +537,7 @@
 <!--  3 · DATE & COUNTDOWN                                    -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="s-date">
+
   <p class="invite-text">
     Con el amor que nos une, la bendición<br>
     de Dios y el apoyo de nuestros padres,<br>
