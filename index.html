@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gabriela &amp; Alejandro – Boda</title>
+  <title>Jessica &amp; Alexander – Boda</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
@@ -11,27 +11,27 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:      #f2ede3;
-      --green-dark: #4a6741;
+      --cream:      #fafcf2;
+      --green-dark: #768566;
       --green-mid:  #6b8f5e;
-      --text-dark:  #3a3a3a;
+      --text-dark:  #161515;
       --text-mid:   #5a5a5a;
     }
 
     html { scroll-behavior: smooth; }
-
+ 
     body {
       font-family: 'Lato', sans-serif;
       background: var(--cream);
       color: var(--text-dark);
-      max-width: min(640px, 100%);
+      max-width: min(740px, 100%);
       margin: 0 auto;
       overflow-x: hidden;
     }
     @media (min-width: 641px) {
       body { box-shadow: 0 0 40px rgba(0,0,0,0.15); }
     }
-
+ 
     /* ── Leaf decorations ─────────────────────────────────── */
     .leaf {
       position: absolute;
@@ -46,10 +46,10 @@
     .leaf.tr { top: 0; right: 0; width: 56%; transform: scaleX(-1); }
     .leaf.bl { bottom: 0; left: 0;  width: 50%; transform: rotate(180deg) scaleX(-1); }
     .leaf.br { bottom: 0; right: 0; width: 50%; transform: rotate(180deg); }
-
+ 
     /* Content wrapper sits above leaves */
     .inner { position: relative; z-index: 1; }
-
+ 
     /* ── SECTION 1 – Hero ─────────────────────────────────── */
     .s-hero {
       position: relative;
@@ -88,26 +88,26 @@
       text-align: center;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1rem;
+      font-size: clamp(0.85rem, 3vw, 1rem);
       color: var(--text-dark);
       padding: 0 24px;
       z-index: 3;
     }
-
+ 
     /* ── SECTION 2 – Names ────────────────────────────────── */
     .s-names {
       background: var(--cream);
       position: relative;
       overflow: visible;
-      padding: 0 28px 40px;
+      padding: 0 clamp(16px, 5vw, 28px) 40px;
       text-align: center;
     }
     .s-names .inner { padding-top: clamp(56px, 18vw, 120px); }
-
+ 
     .bible-verse {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 0.95rem;
+      font-size: clamp(1.30rem, 2.8vw, 0.95rem);
       line-height: 1.65;
       color: var(--text-mid);
       margin-bottom: 28px;
@@ -115,7 +115,7 @@
     .couple-names {
       font-family: 'Great Vibes', cursive;
       font-size: clamp(3rem, 11vw, 5rem);
-      color: var(--text-dark);
+      color: var(--green-dark);
       line-height: 1.1;
     }
     .couple-names .amp {
@@ -125,16 +125,16 @@
     }
     .music-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem;
+      font-size: clamp(0.82rem, 2.8vw, 0.95rem);
       color: var(--text-mid);
       margin: 26px 0 12px;
     }
     .player-bar {
       background: white;
-      border-radius: 50px;
+      border-radius: 10px;
       padding: 12px 20px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      max-width: 280px;
+      max-width: min(380px, 85%);
       margin: 0 auto;
     }
     .player-track {
@@ -148,7 +148,7 @@
       content: '';
       position: absolute;
       left: 0; top: 0; height: 100%;
-      width: 30%;
+      width: 60%;
       background: var(--green-dark);
       border-radius: 2px;
     }
@@ -180,27 +180,24 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(74, 103, 65, 0.3);
     }
-    .play-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 16px rgba(74, 103, 65, 0.4);
-    }
+    .play-btn:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(74, 103, 65, 0.4); }
     .play-btn svg { stroke: white; fill: white; width: 18px; height: 18px; }
-
+ 
     /* ── SECTION 3 – Date & Countdown ────────────────────── */
     .s-date {
       background: var(--cream);
-      padding: 36px 28px 0;
+      padding: 36px clamp(16px, 5vw, 28px) 0;
       text-align: center;
     }
     .invite-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
+      font-size: clamp(1.30rem, 3vw, 1rem);
       line-height: 1.7;
       color: var(--text-mid);
       margin-bottom: 30px;
     }
     .date-month {
-      font-size: 0.65rem;
+      font-size: clamp(0.58rem, 1.8vw, 0.65rem);
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--text-mid);
@@ -210,11 +207,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
+      gap: clamp(8px, 3vw, 14px);
       margin-bottom: 30px;
     }
     .date-vline { width: 1px; height: 58px; background: var(--text-mid); opacity: 0.35; }
-    .date-day-name { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mid); }
+    .date-day-name { font-size: clamp(0.55rem, 1.8vw, 0.62rem); letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-mid); }
     .date-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(3.8rem, 16vw, 7.5rem);
@@ -222,13 +219,13 @@
       color: var(--text-dark);
       line-height: 1;
     }
-    .date-year-label { font-size: 0.62rem; letter-spacing: 0.18em; color: var(--text-mid); }
-    .countdown-title { font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 12px; }
+    .date-year-label { font-size: clamp(0.55rem, 1.8vw, 0.62rem); letter-spacing: 0.18em; color: var(--text-mid); }
+    .countdown-title { font-size: clamp(0.55rem, 1.8vw, 0.62rem); letter-spacing: 0.26em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 12px; }
     .countdown-row {
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      gap: 4px;
+      gap: clamp(2px, 1vw, 4px);
       margin-bottom: 8px;
     }
     .cd-unit { text-align: center; }
@@ -249,7 +246,7 @@
       padding-bottom: 20px;
     }
     .cd-sub {
-      font-size: 0.58rem;
+      font-size: clamp(0.5rem, 1.6vw, 0.58rem);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-mid);
@@ -263,27 +260,27 @@
       display: block;
       margin-top: 28px;
     }
-
+ 
     /* ── SECTION 4 – Locations ────────────────────────────── */
     .s-locations {
       background: var(--cream);
       position: relative;
       overflow: hidden;
-      padding: 0 28px 30px;
+      padding: 0 clamp(16px, 5vw, 28px) 30px;
     }
     .loc-block { text-align: center; padding: 28px 0 10px; }
     .loc-icon { margin-bottom: 12px; }
     .loc-icon svg { width: 38px; height: 38px; stroke: var(--green-mid); fill: none; stroke-width: 1.4; }
-    .loc-title { font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 8px; }
-    .loc-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-dark); margin-bottom: 4px; }
-    .loc-addr { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.92rem; color: var(--text-mid); margin-bottom: 16px; }
+    .loc-title { font-weight: bold; font-size: clamp(0.8rem, 2vw, 0.68rem); letter-spacing: 0.26em; text-transform: uppercase; color: var(--green-dark); margin-bottom: 8px; }
+    .loc-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 3.5vw, 1.2rem); color: var(--text-dark); margin-bottom: 4px; }
+    .loc-addr { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(0.8rem, 2.8vw, 0.92rem); color: var(--text-mid); margin-bottom: 16px; }
     .btn-green {
       display: inline-block;
-      padding: 10px 30px;
+      padding: clamp(8px, 2vw, 10px) clamp(20px, 5vw, 30px);
       background: var(--green-dark);
       color: white;
       border-radius: 50px;
-      font-size: 0.78rem;
+      font-size: clamp(0.7rem, 2.2vw, 0.78rem);
       letter-spacing: 0.04em;
       text-decoration: none;
       border: none;
@@ -296,92 +293,155 @@
       box-shadow: 0 4px 12px rgba(74, 103, 65, 0.3);
     }
     .thin-divider { width: 60%; height: 1px; background: rgba(0,0,0,0.12); margin: 8px auto; }
-
-    /* ── Itinerary zigzag timeline ────────────────────────── */
-    .section-title {
-      font-size: 0.68rem;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--text-dark);
-      margin-bottom: 24px;
-    }
-    .timeline {
-      position: relative;
-      width: 100%;
-      padding-bottom: 8px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%; top: 0; bottom: 0;
-      width: 1px;
-      background: rgba(0,0,0,0.14);
-      transform: translateX(-50%);
-    }
-    .tl-row {
-      display: flex;
-      align-items: center;
-      margin-bottom: 22px;
-      position: relative;
-    }
-    .tl-left {
-      width: 50%;
-      display: flex; flex-direction: column;
-      align-items: flex-end;
-      padding-right: 22px;
-      text-align: right;
-    }
-    .tl-right {
-      width: 50%;
-      display: flex; flex-direction: column;
-      align-items: flex-start;
-      padding-left: 22px;
-      text-align: left;
-    }
-    .tl-time { font-size: 0.62rem; letter-spacing: 0.08em; color: var(--text-mid); margin-bottom: 3px; }
-    .tl-icon { font-size: 1.3rem; line-height: 1; margin-bottom: 3px; }
-    .tl-label { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dark); line-height: 1.35; }
-    .tl-dot {
-      position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      width: 7px; height: 7px;
-      background: var(--green-mid);
-      border-radius: 50%;
-      z-index: 1;
-    }
-
+ 
+    
+ 
     /* ── SECTION 5 – Dress Code & Gifts ──────────────────── */
     .s-dresscode {
       background: var(--cream);
       position: relative;
       overflow: hidden;
-      padding: 36px 28px 36px;
+      padding: 36px clamp(16px, 5vw, 28px) 36px;
       text-align: center;
     }
-    .dc-type { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--text-mid); margin-bottom: 20px; }
+    .dc-type { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.95rem, 3vw, 1.1rem); color: var(--text-mid); margin-bottom: 20px; }
     .dc-figures { display: flex; justify-content: center; align-items: flex-end; gap: 12px; margin-bottom: 32px; }
-    .gifts-text { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; line-height: 1.65; color: var(--text-mid); margin-bottom: 18px; }
-    .transfer-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 14px; }
+    .gifts-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.82rem, 2.8vw, 0.95rem); line-height: 1.65; color: var(--text-mid); margin-bottom: 18px; }
+    .transfer-label { font-size: clamp(0.6rem, 2vw, 0.68rem); letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 14px; }
     .qr-box { width: 130px; height: 130px; background: #1e1e1e; border-radius: 6px; margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; }
     .mc-logo { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 12px; }
     .mc-badge { background: var(--green-dark); color: white; font-weight: 700; font-size: 0.72rem; padding: 4px 7px; border-radius: 4px; }
     .mc-name { font-size: 0.9rem; font-weight: 700; }
-
+ 
     /* ── SECTION 6 – RSVP ────────────────────────────────── */
     .s-rsvp {
       background: var(--cream);
       position: relative;
       overflow: hidden;
-      padding: 0 28px 60px;
+      padding: 0 clamp(16px, 5vw, 28px) 60px;
       text-align: center;
     }
     .s-rsvp .inner { padding-top: 14px; }
     .phone-icon { font-size: 1.9rem; display: block; margin-bottom: 8px; }
-    .no-kids-title { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 8px; }
-    .no-kids-text { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; line-height: 1.65; color: var(--text-mid); margin-bottom: 30px; }
-    .see-you { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 14px; }
+    .no-kids-title { font-size: clamp(0.6rem, 2vw, 0.68rem); letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dark); margin-bottom: 8px; }
+    .no-kids-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.82rem, 2.8vw, 0.95rem); line-height: 1.65; color: var(--text-mid); margin-bottom: 30px; }
+    .see-you { font-size: clamp(0.55rem, 1.8vw, 0.62rem); letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 14px; }
     .thanks { font-family: 'Great Vibes', cursive; font-size: clamp(2.6rem, 10vw, 4.8rem); color: var(--text-dark); }
+     
+ /* ── Photo collage ───────────────────────────────────── */
+    .photo-collage {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: clamp(6px, 2vw, 10px);
+      padding: clamp(8px, 3vw, 16px);
+      background: var(--cream);
+    }
+    .photo-collage .pc-main {
+      grid-column: 1 / -1;
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 8px solid white;
+    }
+    .photo-collage .pc-sub {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      border: 8px solid white;
+    }
+    .photo-collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .pc-main img  { aspect-ratio: 3 / 4; }
+    .pc-sub  img  { aspect-ratio: 1 / 1; }
+
+  .it-wrap {
+    padding: 28px 20px 36px;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .it-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #3a3a3a;
+    margin-bottom: 24px;
+  }
+  .it-timeline {
+    position: relative;
+    width: 100%;
+    padding-bottom: 8px;
+  }
+  .it-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(0,0,0,0.18);
+    transform: translateX(-50%);
+  }
+  .it-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 26px;
+    position: relative;
+  }
+  .it-left {
+    width: 50%;
+    display: flex; flex-direction: column;
+    align-items: flex-end;
+    padding-right: 24px;
+    text-align: right;
+    gap: 3px;
+  }
+  .it-right {
+    width: 50%;
+    display: flex; flex-direction: column;
+    align-items: flex-start;
+    padding-left: 24px;
+    text-align: left;
+    gap: 3px;
+  }
+  .it-time {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: #5a5a5a;
+    font-weight: 400;
+  }
+  .it-icon svg {
+    width: 40px; height: 40px;
+    fill: none;
+    stroke: #6b8f5e;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .it-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3a3a3a;
+    line-height: 1.4;
+    font-style: italic;
+  }
+  .it-dot {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px; height: 7px;
+    background: #6b8f5e;
+    border-radius: 50%;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+ 
   </style>
 </head>
 <body>
@@ -390,10 +450,9 @@
 <!--  1 · HERO PHOTO                                          -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="s-hero">
-  <img class="hero-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=85" alt="Gabriela y Alejandro" />
-  <div class="hero-fade"></div>
-  <img class="hero-leaf" src="leaves.jpg" alt="" />
-  <p class="hero-quote">"Ya no son dos, sino uno solo."</p>
+  <img class="hero-img" src="collage/pre-weddning.jpeg" alt="Gabriela y Alejandro" />
+  <div class="hero-fade"></div> 
+  <img class="leaf bl" src="img/leaves.png" alt="" />
 </section>
 
 
@@ -401,38 +460,56 @@
 <!--  2 · NAMES + MUSIC PLAYER                                -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="s-names">
-  <img class="leaf tl" src="leaves.jpg" alt="" />
-  <img class="leaf tr" src="leaves.jpg" alt="" />
+
+  <img class="leaf tr" src="img/leaves.png" alt="" />
   
-  <div class="inner">
+
     <p class="bible-verse">
       "Ya no son dos, sino uno solo.<br>
       Por tanto, lo que Dios ha unido,<br>
       que no lo separe el hombre".<br>
       (Mateo 19:6)
     </p>
+      <div class="inner">
     <div class="couple-names">
       Jessica<br>
       <span class="amp">&amp;</span>
       Alexander
-    </div>
+    </div></div>
     <p class="music-label">Dale play a nuestra canción</p>
+   <audio id="weddingAudio" loop preload="metadata">
+      <source src="Musica/cancion.mp3" type="audio/mpeg" />
+    </audio>
+ 
     <div class="player-bar">
-      <div class="player-track"><div class="knob"></div></div>
+      <div class="player-track" id="progressBar" onclick="seekAudio(event)" style="cursor:pointer;position:relative;height:3px;background:#ddd;border-radius:2px;margin-bottom:6px;">
+        <div id="progressFill" style="position:absolute;left:0;top:0;height:100%;width:0%;background:#4a6741;border-radius:2px;pointer-events:none;"></div>
+        <div id="progressKnob" style="position:absolute;left:0%;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;background:#4a6741;border-radius:50%;pointer-events:none;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px;padding:0 2px;">
+        <span id="timeElapsed" style="font-size:0.62rem;color:#5a5a5a;font-family:Lato,sans-serif;">0:00</span>
+        <span id="timeDuration" style="font-size:0.62rem;color:#5a5a5a;font-family:Lato,sans-serif;">0:00</span>
+      </div>
       <div class="player-controls">
-        <svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 20l5-5M21 3l-7 7M16 21h5v-5M15 15l6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <svg viewBox="0 0 24 24"><polygon points="19,20 9,12 19,4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="5" y1="4" x2="5" y2="20" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 24 24" onclick="skipBack()" style="cursor:pointer;width:22px;height:22px;fill:none;stroke:#4a6741;stroke-width:1.8;">
+          <polyline points="1,4 1,10 7,10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3.51 15a9 9 0 1 0 .49-4.95" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="12" y="15" text-anchor="middle" font-size="5.5" fill="#4a6741" stroke="none" font-family="Lato,sans-serif" font-weight="bold">10</text>
+        </svg>
         <button class="play-btn" id="playBtn" onclick="togglePlay()" aria-label="Play">
-          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white" stroke="none"/></svg>
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white;stroke:none;"><polygon points="5,3 19,12 5,21"/></svg>
         </button>
-        <svg viewBox="0 0 24 24"><polygon points="5,4 15,12 5,20" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="19" y1="4" x2="19" y2="20" stroke-linecap="round"/></svg>
-        <svg viewBox="0 0 24 24"><polyline points="17,1 21,5 17,9" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 11V9a4 4 0 0 1 4-4h14" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 24 24" onclick="skipForward()" style="cursor:pointer;width:22px;height:22px;fill:none;stroke:#4a6741;stroke-width:1.8;">
+          <polyline points="23,4 23,10 17,10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20.49 15a9 9 0 1 1-.49-4.95" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="12" y="15" text-anchor="middle" font-size="5.5" fill="#4a6741" stroke="none" font-family="Lato,sans-serif" font-weight="bold">10</text>
+        </svg>
       </div>
     </div>
   </div>
   
-  <img class="leaf bl" src="leaves.jpg" alt="" />
-  <img class="leaf br" src="leaves.jpg" alt="" />
+  <img class="leaf bl" src="img/leaves.png" alt="" />
+
 </section>
 
 
@@ -456,7 +533,7 @@
   </div>
   <p class="countdown-title">FALTAN</p>
   <div class="countdown-row">
-    <div class="cd-unit"><span class="cd-num" id="cd-d">000</span><span class="cd-sub">Días</span></div>
+    <div class="cd-unit"><span class="cd-num" id="cd-d">00</span><span class="cd-sub">Días</span></div>
     <span class="cd-sep">:</span>
     <div class="cd-unit"><span class="cd-num" id="cd-h">00</span><span class="cd-sub">Horas</span></div>
     <span class="cd-sep">:</span>
@@ -464,7 +541,19 @@
     <span class="cd-sep">:</span>
     <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-sub">Seg</span></div>
   </div>
-  <img class="section-photo" style="object-position:center 20%;" src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=900&q=85" alt="Pareja" />
+  
+   <!-- Collage de fotos con fade -->
+  <div class="photo-collage">
+    <div class="pc-main">
+      <img src="collage/foto1.jpeg" alt="Pareja 1" style="object-position:center top;" />
+    </div>
+    <div class="pc-sub">
+      <img src="collage/foto2.jpeg" alt="Pareja 2" style="object-position:center center;" />
+    </div>
+    <div class="pc-sub">
+      <img src="collage/foto3.jpeg" alt="Pareja 3" style="object-position:center center;" />
+    </div>
+  </div>
 </section>
 
 
@@ -472,7 +561,7 @@
 <!--  4 · LOCATIONS + ITINERARY                               -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="s-locations">
-  <img class="leaf tr" src="leaves.jpg" alt="" />
+  <img class="leaf tl" src="img/leaves.png" alt="" />
   <div class="inner">
 
     <div class="loc-block">
@@ -516,65 +605,171 @@
     <div class="thin-divider" style="margin-top:20px;"></div>
 
     <!-- Itinerary -->
-    <div style="padding:24px 0 0;text-align:center;">
-      <p class="section-title">ITINERARIO DE ACTIVIDADES</p>
-      <div class="timeline">
-        <div class="tl-row">
-          <div class="tl-left">
-            <span class="tl-time">12:00 PM</span>
-            <span class="tl-icon">📷</span>
-            <span class="tl-label">SESIÓN<br>DE FOTOS</span>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-right">
-            <span class="tl-time">11:00 AM</span>
-            <span class="tl-icon">✏️</span>
-            <span class="tl-label">CEREMONIA<br>RELIGIOSA</span>
-          </div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-left">
-            <span class="tl-time">3:00 PM</span>
-            <span class="tl-icon">🎂</span>
-            <span class="tl-label">TORTA</span>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-right">
-            <span class="tl-time">1:00 PM</span>
-            <span class="tl-icon">🍽️</span>
-            <span class="tl-label">CENA</span>
-          </div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-left">
-            <span class="tl-time">5:00 PM</span>
-            <span class="tl-icon">💃</span>
-            <span class="tl-label">PRIMER<br>BAILE</span>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-right">
-            <span class="tl-time">4:00 PM</span>
-            <span class="tl-icon">🥂</span>
-            <span class="tl-label">BRINDIS</span>
-          </div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-left">
-            <span class="tl-time">11:00 PM</span>
-            <span class="tl-icon">🎉</span>
-            <span class="tl-label">DESPEDIDA</span>
-          </div>
-          <div class="tl-dot"></div>
-          <div class="tl-right">
-            <span class="tl-time">8:00 PM</span>
-            <span class="tl-icon">🍴</span>
-            <span class="tl-label">BOCADITOS</span>
-          </div>
-        </div>
+   <div class="it-wrap">  
+  <p class="loc-title">Itinerario de Actividades</p>
+  <div class="it-timeline">
+
+    <!-- ROW 1: Sesión de Fotos | Ceremonia Religiosa -->
+    <div class="it-row">
+      <div class="it-left">
+        <span class="it-time">12:00 PM</span>
+        <span class="it-icon">
+          <!-- Cámara fotográfica -->
+          <svg viewBox="0 0 28 28">
+            <rect x="3" y="9" width="22" height="15" rx="2"/>
+            <circle cx="14" cy="16" r="4.5"/>
+            <path d="M10 9l2-4h4l2 4"/>
+            <circle cx="21" cy="12" r="1" fill="#6b8f5e" stroke="none"/>
+          </svg>
+        </span>
+        <span class="it-label">Sesión<br>de Fotos</span>
+      </div>
+      <div class="it-dot"></div>
+      <div class="it-right">
+        <span class="it-time">11:00 AM</span>
+        <span class="it-icon">
+          <!-- Anillos de matrimonio -->
+          <svg viewBox="0 0 28 28">
+            <circle cx="10" cy="15" r="5.5"/>
+            <circle cx="18" cy="15" r="5.5"/>
+            <path d="M7 9.5 Q10 5 13 9.5" stroke-width="1.2"/>
+            <path d="M15 9.5 Q18 5 21 9.5" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span class="it-label">Ceremonia<br>Religiosa</span>
       </div>
     </div>
 
-    <img class="section-photo" style="object-position:center;" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=85" alt="Jardín de recepción" />
+    <!-- ROW 2: Torta | Cena -->
+    <div class="it-row">
+      <div class="it-left">
+        <span class="it-time">3:00 PM</span>
+        <span class="it-icon">
+          <!-- Pastel de bodas -->
+          <svg viewBox="0 0 28 28">
+            <rect x="5" y="15" width="18" height="8" rx="1"/>
+            <rect x="8" y="10" width="12" height="5" rx="1"/>
+            <line x1="14" y1="6" x2="14" y2="10"/>
+            <path d="M11 6 Q14 3 17 6"/>
+            <line x1="9"  y1="15" x2="9"  y2="23"/>
+            <line x1="14" y1="15" x2="14" y2="23"/>
+            <line x1="19" y1="15" x2="19" y2="23"/>
+          </svg>
+        </span>
+        <span class="it-label">Torta</span>
+      </div>
+      <div class="it-dot"></div>
+      <div class="it-right">
+        <span class="it-time">1:00 PM</span>
+        <span class="it-icon">
+          <!-- Plato con cubiertos -->
+          <svg viewBox="0 0 28 28">
+            <circle cx="14" cy="15" r="7"/>
+            <line x1="5"  y1="7"  x2="5"  y2="13"/>
+            <path d="M3 7 Q5 10 7 7"/>
+            <line x1="5"  y1="13" x2="5"  y2="22"/>
+            <line x1="23" y1="7"  x2="23" y2="22"/>
+          </svg>
+        </span>
+        <span class="it-label">Cena</span>
+      </div>
+    </div>
+
+    <!-- ROW 3: Primer Baile | Brindis -->
+    <div class="it-row">
+      <div class="it-left">
+        <span class="it-time">5:00 PM</span>
+        <span class="it-icon">
+          <!-- Pareja bailando -->
+          <svg viewBox="0 0 28 28">
+            <circle cx="10" cy="5" r="2.2"/>
+            <circle cx="19" cy="5" r="2.2"/>
+            <path d="M10 7.5 L8 14 L12 13 L10 20"/>
+            <path d="M19 7.5 L21 14 L17 13 L19 20"/>
+            <path d="M8 14 L14 16 L17 13"/>
+            <line x1="8" y1="20" x2="12" y2="22"/>
+            <line x1="12" y1="20" x2="10" y2="23"/>
+            <line x1="17" y1="20" x2="21" y2="22"/>
+            <line x1="21" y1="20" x2="19" y2="23"/>
+          </svg>
+        </span>
+        <span class="it-label">Primer<br>Baile</span>
+      </div>
+      <div class="it-dot"></div>
+      <div class="it-right">
+        <span class="it-time">4:00 PM</span>
+        <span class="it-icon">
+          <!-- Copas de champagne -->
+          <svg viewBox="0 0 28 28">
+            <path d="M8 4 L6 13 Q6 17 10 17 Q14 17 14 13 L12 4Z"/>
+            <path d="M16 4 L14 13 Q14 17 18 17 Q22 17 22 13 L20 4Z"/>
+            <line x1="10" y1="17" x2="10" y2="23"/>
+            <line x1="18" y1="17" x2="18" y2="23"/>
+            <line x1="7"  y1="23" x2="13" y2="23"/>
+            <line x1="15" y1="23" x2="21" y2="23"/>
+            <line x1="12" y1="9"  x2="16" y2="9" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="it-label">Brindis</span>
+      </div>
+    </div>
+
+    <!-- ROW 4: Despedida | Bocaditos -->
+    <div class="it-row">
+      <div class="it-left">
+        <span class="it-time">11:00 PM</span>
+        <span class="it-icon">
+          <!-- Fuegos artificiales / despedida -->
+          <svg viewBox="0 0 28 28">
+            <line x1="14" y1="4"  x2="14" y2="10"/>
+            <line x1="20" y1="6"  x2="17" y2="11"/>
+            <line x1="24" y1="12" x2="18" y2="13"/>
+            <line x1="22" y1="19" x2="17" y2="16"/>
+            <line x1="8"  y1="6"  x2="11" y2="11"/>
+            <line x1="4"  y1="12" x2="10" y2="13"/>
+            <line x1="6"  y1="19" x2="11" y2="16"/>
+            <circle cx="14" cy="14" r="3.5"/>
+            <circle cx="14" cy="4"  r="1" fill="#6b8f5e" stroke="none"/>
+            <circle cx="21" cy="5"  r="1" fill="#6b8f5e" stroke="none"/>
+            <circle cx="25" cy="12" r="1" fill="#6b8f5e" stroke="none"/>
+            <circle cx="23" cy="20" r="1" fill="#6b8f5e" stroke="none"/>
+            <circle cx="7"  cy="5"  r="1" fill="#6b8f5e" stroke="none"/>
+            <circle cx="3"  cy="12" r="1" fill="#6b8f5e" stroke="none"/>
+            <circle cx="5"  cy="20" r="1" fill="#6b8f5e" stroke="none"/>
+          </svg>
+        </span>
+        <span class="it-label">Despedida</span>
+      </div>
+      <div class="it-dot"></div>
+      <div class="it-right">
+        <span class="it-time">8:00 PM</span>
+        <span class="it-icon">
+          <!-- Bandeja de bocaditos -->
+          <svg viewBox="0 0 28 28">
+            <ellipse cx="14" cy="19" rx="10" ry="3"/>
+            <path d="M4 19 Q4 23 14 23 Q24 23 24 19"/>
+            <rect x="8" y="13" width="4" height="6" rx="1"/>
+            <rect x="16" y="13" width="4" height="6" rx="1"/>
+            <rect x="12" y="11" width="4" height="8" rx="1"/>
+            <line x1="14" y1="5" x2="14" y2="11"/>
+            <circle cx="14" cy="4" r="1.5" fill="#6b8f5e" stroke="none"/>
+          </svg>
+        </span>
+        <span class="it-label">Bocaditos</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+   <!-- Collage de fotos con fade -->
+  <div class="photo-collage">
+    <div class="pc-sub">
+      <img src="collage/foto4.jpeg" alt="Pareja 2" style="object-position:center center;" />
+    </div>
+    <div class="pc-sub">
+      <img src="collage/foto5.jpeg" alt="Pareja 3" style="object-position:center center;" />
+    </div>
+  </div>
   </div>
 </section>
 
@@ -583,40 +778,36 @@
 <!--  5 · DRESS CODE & GIFTS                                  -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="s-dresscode">
-  <img class="leaf tr" src="leaves.jpg" alt="" />
+  <img class="leaf tl" src="img/leaves.png" alt="" />
   <div class="inner">
-    <p class="section-title">CÓDIGO DE VESTIMENTA</p>
-    <p class="dc-type">Formal</p>
-
-    <div class="dc-figures">
-      <!-- Groom -->
-      <svg width="65" height="115" viewBox="0 0 65 115">
-        <circle cx="32" cy="13" r="10" fill="#3a3a3a"/>
-        <path d="M18 26Q32 22 46 26L48 68L16 68Z" fill="#2a2a2a"/>
-        <rect x="15" y="68" width="14" height="38" rx="2" fill="#2a2a2a"/>
-        <rect x="36" y="68" width="14" height="38" rx="2" fill="#2a2a2a"/>
-        <path d="M25 26L32 37L39 26" fill="none" stroke="white" stroke-width="1.4"/>
-        <line x1="32" y1="37" x2="32" y2="58" stroke="white" stroke-width="1.4"/>
-      </svg>
-      <!-- Bride -->
-      <svg width="65" height="115" viewBox="0 0 65 115">
-        <circle cx="32" cy="13" r="10" fill="#5a7a52"/>
-        <path d="M20 26Q32 22 44 26L50 62Q42 82 32 108Q22 82 14 62Z" fill="#5a7a52"/>
-        <path d="M17 34Q32 28 47 34" fill="none" stroke="#3d5e36" stroke-width="1.5"/>
-      </svg>
-    </div>
+    <p class="loc-title">CÓDIGO DE VESTIMENTA</p>
+    <p class="loc-name">Formal</p>
+    <img src="img/vestimenta.avif" alt="Pareja" width="110" height="200"/>
 
     <div class="thin-divider"></div>
 
     <div style="margin-top:26px;">
-      <div style="font-size:2rem;margin-bottom:10px;">🎁</div>
-      <p class="section-title">SUGERENCIA DE REGALOS</p>
+     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#4a6741" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Caja regalo -->
+          <rect x="4" y="16" width="28" height="18" rx="1"></rect>
+          <!-- Tapa -->
+          <rect x="2" y="11" width="32" height="5" rx="1"></rect>
+          <!-- Cinta vertical -->
+          <line x1="18" y1="11" x2="18" y2="34"></line>
+          <!-- Cinta horizontal (tapa) -->
+          <line x1="2" y1="13.5" x2="34" y2="13.5"></line>
+          <!-- Lazo izquierdo -->
+          <path d="M18 11 Q12 4 8 7 Q5 10 10 11 Z" fill="#4a6741" stroke="none"></path>
+          <!-- Lazo derecho -->
+          <path d="M18 11 Q24 4 28 7 Q31 10 26 11 Z" fill="#4a6741" stroke="none"></path>
+        </svg><br>
+      <p class="loc-title">SUGERENCIA DE REGALOS</p>
       <p class="gifts-text">
         Su presencia en nuestra boda será el<br>
         mejor regalo. Pero si desean darnos otro<br>
         obsequio, les dejamos estas opciones:
       </p>
-      <p class="transfer-label">TRANSFERENCIA</p>
+      <p class="loc-title">TRANSFERENCIA</p>
       <div class="qr-box">
         <svg width="112" height="112" viewBox="0 0 112 112">
           <rect width="112" height="112" fill="#1e1e1e"/>
@@ -641,10 +832,6 @@
         </svg>
       </div>
       <a href="#" class="btn-green" style="display:inline-block;margin-bottom:14px;">Nuestra Lista</a>
-      <div class="mc-logo">
-        <span class="mc-badge">MC</span>
-        <span class="mc-name"><span style="color:#e55b00;">multi</span><span style="color:#4a6741;">center</span></span>
-      </div>
     </div>
   </div>
 </section>
@@ -654,17 +841,15 @@
 <!--  6 · RSVP & CLOSING                                      -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="s-rsvp">
-  <img class="leaf tl" src="leaves.jpg" alt="" />
-  <img class="leaf tr" src="leaves.jpg" alt="" />
   <div class="inner">
-    <div class="mc-logo" style="margin-bottom:28px;">
-      <span class="mc-badge">MC</span>
-      <span class="mc-name"><span style="color:#e55b00;">multi</span><span style="color:#4a6741;">center</span></span>
-    </div>
-    <span class="phone-icon">📞</span>
-    <p class="section-title">CONFIRMAR ASISTENCIA</p>
+    <span class="phone-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#4a6741" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 4h7l3 7-4 2a16 16 0 0 0 7 7l2-4 7 3v7a2 2 0 0 1-2 2C10 28 4 18 4 6a2 2 0 0 1 2-2z"></path>
+        </svg>
+      </span>
+    <p class="loc-title">CONFIRMAR ASISTENCIA</p>
     <a href="https://wa.me/59100000000" class="btn-green" style="display:inline-block;margin-bottom:30px;">Confirmar aquí</a>
-    <p class="no-kids-title">NO NIÑOS</p>
+    <p class="loc-name">NO NIÑOS</p>
     <p class="no-kids-text">
       Amamos a los niños, pero por razones<br>
       de seguridad, nuestra boda será solo<br>
@@ -673,8 +858,7 @@
     <p class="see-you">ESPERAMOS CONTAR CON SU PRESENCIA</p>
     <p class="thanks">Muchas Gracias!</p>
   </div>
-  <img class="leaf bl" src="leaves.jpg" alt="" />
-  <img class="leaf br" src="leaves.jpg" alt="" />
+  <img class="leaf br" src="img/leaves.png" alt="" />
 </section>
 
 
@@ -688,7 +872,7 @@
     const h = Math.floor((diff % 86400000) / 3600000);
     const m = Math.floor((diff % 3600000)  / 60000);
     const s = Math.floor((diff % 60000)    / 1000);
-    document.getElementById('cd-d').textContent = String(d).padStart(3,'0');
+    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
     document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
     document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
     document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
@@ -696,14 +880,58 @@
   tick();
   const timer = setInterval(tick, 1000);
 
-  /* Music toggle */
-  let playing = false;
-  function togglePlay() {
-    playing = !playing;
-    document.getElementById('playBtn').innerHTML = playing
-      ? '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white;stroke:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>'
-      : '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white;stroke:none"><polygon points="5,3 19,12 5,21"/></svg>';
+/* ── Music Player ─────────────────────────────────────── */
+  const audio      = document.getElementById('weddingAudio');
+  const playBtn    = document.getElementById('playBtn');
+  const fill       = document.getElementById('progressFill');
+  const knob       = document.getElementById('progressKnob');
+  const bar        = document.getElementById('progressBar');
+  const elapsed    = document.getElementById('timeElapsed');
+  const duration   = document.getElementById('timeDuration');
+ 
+  const iconPlay  = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white;stroke:none"><polygon points="5,3 19,12 5,21"/></svg>';
+  const iconPause = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white;stroke:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+ 
+  function fmtTime(s) {
+    const m = Math.floor(s / 60);
+    const ss = Math.floor(s % 60);
+    return m + ':' + String(ss).padStart(2, '0');
   }
+ 
+  function togglePlay() {
+    if (audio.paused) {
+      audio.play();
+      playBtn.innerHTML = iconPause;
+    } else {
+      audio.pause();
+      playBtn.innerHTML = iconPlay;
+    }
+  }
+ 
+  function skipBack()    { audio.currentTime = Math.max(0, audio.currentTime - 10); }
+  function skipForward() { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 10); }
+ 
+  function seekAudio(e) {
+    const rect = bar.getBoundingClientRect();
+    const pct  = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+    if (audio.duration) audio.currentTime = pct * audio.duration;
+  }
+ 
+  audio.addEventListener('loadedmetadata', () => {
+    duration.textContent = fmtTime(audio.duration);
+  });
+ 
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    fill.style.width   = pct + '%';
+    knob.style.left    = pct + '%';
+    elapsed.textContent = fmtTime(audio.currentTime);
+  });
+ 
+  audio.addEventListener('ended', () => {
+    playBtn.innerHTML = iconPlay;
+  });
 </script>
 </body>
 </html>
