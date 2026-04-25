@@ -112,16 +112,19 @@
       color: var(--text-mid);
       margin-bottom: 28px;
     }
-    .couple-names {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(3rem, 11vw, 5rem);
-      color: var(--green-dark);
-      line-height: 1.1;
-    }
+    .couple-names .name-1 { align-self: flex-start; }
     .couple-names .amp {
       display: block;
       font-size: clamp(2.2rem, 8.5vw, 3.8rem);
       line-height: 1.05;
+      align-self: center;
+    }
+    .couple-names .name-2 { align-self: flex-end; }
+    .music-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.82rem, 2.8vw, 0.95rem);
+      color: var(--text-mid);
+      margin: 26px 0 12px;
     }
     .music-label {
       font-family: 'Cormorant Garamond', serif;
@@ -471,10 +474,10 @@
       (Mateo 19:6)
     </p>
       <div class="inner">
-    <div class="couple-names">
-      Jessica<br>
+      <div class="couple-names">
+      <span class="name-1">Jessica</span>
       <span class="amp">&amp;</span>
-      Alexander
+      <span class="name-2">Alexander</span>
     </div></div>
     <p class="music-label">Dale play a nuestra canción</p>
    <audio id="weddingAudio" loop preload="metadata">
