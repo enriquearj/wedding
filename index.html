@@ -43,10 +43,10 @@
       -webkit-mask-image: radial-gradient(ellipse at 0% 0%, black 30%, rgba(0,0,0,0.6) 52%, transparent 72%);
       mask-image: radial-gradient(ellipse at 0% 0%, black 30%, rgba(0,0,0,0.6) 52%, transparent 72%);
     }
-    .leaf.tl { top: -6px; left: -6px;  width: 56%; transform: none; }
-    .leaf.tr { top: -6px; right: -6px; width: 56%; transform: scaleX(-1); }
-    .leaf.bl { bottom: -6px; left: -6px;  width: 50%; transform: rotate(180deg) scaleX(-1); }
-    .leaf.br { bottom: -6px; right: -6px; width: 50%; transform: rotate(180deg); }
+    .leaf.tl { top: 0; left: 0;  width: 56%; transform: none; }
+    .leaf.tr { top: 0; right: 0; width: 56%; transform: scaleX(-1); }
+    .leaf.bl { bottom: 0; left: 0;  width: 50%; transform: rotate(180deg) scaleX(-1); }
+    .leaf.br { bottom: 0; right: 0; width: 50%; transform: rotate(180deg); }
 
     /* Content wrapper sits above leaves */
     .inner { position: relative; z-index: 1; }
@@ -99,43 +99,13 @@
     .s-names {
       background: linear-gradient(135deg, #5a7a52 0%, #7fa66f 50%, #6b8f5e 100%);
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       padding: 0 28px 40px;
       text-align: center;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    
-    /* Decorative leaves for s-names */
-    .s-names::before {
-      content: '';
-      position: absolute;
-      top: -20px;
-      left: -40px;
-      width: 200px;
-      height: 200px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10Q60 20 65 35Q60 40 50 45Q40 40 35 35Q40 20 50 10Z" fill="%23ffffff" opacity="0.15"/></svg>');
-      background-size: contain;
-      background-repeat: no-repeat;
-      pointer-events: none;
-      z-index: 0;
-    }
-    
-    .s-names::after {
-      content: '';
-      position: absolute;
-      bottom: -30px;
-      right: -30px;
-      width: 250px;
-      height: 250px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10Q60 20 65 35Q60 40 50 45Q40 40 35 35Q40 20 50 10Z" fill="%23ffffff" opacity="0.12"/></svg>');
-      background-size: contain;
-      background-repeat: no-repeat;
-      pointer-events: none;
-      z-index: 0;
-      transform: scaleX(-1) rotate(45deg);
     }
 
     .s-names .inner { 
@@ -446,7 +416,9 @@
 <!--  2 · NAMES + MUSIC PLAYER                                -->
 <!-- ════════════════════════════════════════════════════════ -->
 <section class="s-names">
-
+  <img class="leaf tl" src="leaves.jpg" alt="" />
+  <img class="leaf tr" src="leaves.jpg" alt="" />
+  
   <div class="inner">
     <p class="bible-verse">
       "Ya no son dos, sino uno solo.<br>
@@ -473,6 +445,9 @@
       </div>
     </div>
   </div>
+  
+  <img class="leaf bl" src="leaves.jpg" alt="" />
+  <img class="leaf br" src="leaves.jpg" alt="" />
 </section>
 
 
@@ -510,7 +485,7 @@
 
 <!-- ════════════════════════════════════════════════════════ -->
 <!--  4 · LOCATIONS + ITINERARY                               -->
-<!-- ══════════════════════════���═════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════ -->
 <section class="s-locations">
   <img class="leaf tr" src="leaves.jpg" alt="" />
   <div class="inner">
