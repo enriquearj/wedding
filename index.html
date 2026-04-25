@@ -14,6 +14,7 @@
       --cream:      #f2ede3;
       --green-dark: #4a6741;
       --green-mid:  #6b8f5e;
+      --green-light: #7fa66f;
       --text-dark:  #3a3a3a;
       --text-mid:   #5a5a5a;
     }
@@ -96,27 +97,70 @@
 
     /* ── SECTION 2 – Names ────────────────────────────────── */
     .s-names {
-      background: var(--cream);
+      background: linear-gradient(135deg, #5a7a52 0%, #7fa66f 50%, #6b8f5e 100%);
       position: relative;
       overflow: hidden;
       padding: 0 28px 40px;
       text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .s-names .inner { padding-top: clamp(56px, 18vw, 120px); }
+    
+    /* Decorative leaves for s-names */
+    .s-names::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -40px;
+      width: 200px;
+      height: 200px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10Q60 20 65 35Q60 40 50 45Q40 40 35 35Q40 20 50 10Z" fill="%23ffffff" opacity="0.15"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .s-names::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 250px;
+      height: 250px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 10Q60 20 65 35Q60 40 50 45Q40 40 35 35Q40 20 50 10Z" fill="%23ffffff" opacity="0.12"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      z-index: 0;
+      transform: scaleX(-1) rotate(45deg);
+    }
+
+    .s-names .inner { 
+      padding-top: clamp(56px, 18vw, 120px);
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 100%;
+    }
 
     .bible-verse {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 0.95rem;
       line-height: 1.65;
-      color: var(--text-mid);
+      color: rgba(255, 255, 255, 0.9);
       margin-bottom: 28px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
     .couple-names {
       font-family: 'Great Vibes', cursive;
       font-size: clamp(3rem, 11vw, 5rem);
-      color: var(--text-dark);
+      color: white;
       line-height: 1.1;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
     .couple-names .amp {
       display: block;
@@ -126,14 +170,17 @@
     .music-label {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.95rem;
-      color: var(--text-mid);
+      color: rgba(255, 255, 255, 0.85);
       margin: 26px 0 12px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
     .player-bar {
-      background: white;
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 50px;
       padding: 12px 20px;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      max-width: 280px;
+      margin: 0 auto;
     }
     .player-track {
       position: relative;
@@ -175,6 +222,12 @@
       border: none; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; flex-shrink: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(74, 103, 65, 0.3);
+    }
+    .play-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(74, 103, 65, 0.4);
     }
     .play-btn svg { stroke: white; fill: white; width: 18px; height: 18px; }
 
@@ -280,6 +333,12 @@
       text-decoration: none;
       border: none;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-green:hover {
+      background: var(--green-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(74, 103, 65, 0.3);
     }
     .thin-divider { width: 60%; height: 1px; background: rgba(0,0,0,0.12); margin: 8px auto; }
 
@@ -410,10 +469,10 @@
           <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white" stroke="none"/></svg>
         </button>
         <svg viewBox="0 0 24 24"><polygon points="5,4 15,12 5,20" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="19" y1="4" x2="19" y2="20" stroke-linecap="round"/></svg>
-        <svg viewBox="0 0 24 24"><polyline points="17,1 21,5 17,9" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 11V9a4 4 0 0 1 4-4h14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="7,23 3,19 7,15" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 13v2a4 4 0 0 1-4 4H3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg viewBox="0 0 24 24"><polyline points="17,1 21,5 17,9" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 11V9a4 4 0 0 1 4-4h14" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </div>
-  </div>  <img class="leaf br" src="leaves.jpg" alt="" />
+  </div>
 </section>
 
 
@@ -451,7 +510,7 @@
 
 <!-- ════════════════════════════════════════════════════════ -->
 <!--  4 · LOCATIONS + ITINERARY                               -->
-<!-- ════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════���═════════════════════════════ -->
 <section class="s-locations">
   <img class="leaf tr" src="leaves.jpg" alt="" />
   <div class="inner">
