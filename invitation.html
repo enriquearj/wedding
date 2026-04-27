@@ -24,7 +24,9 @@
       --text-mid:   #5a5a5a;
     }
 
-    html { scroll-behavior: smooth; }
+    html { 
+      scroll-behavior: smooth; 
+    }
 
     body {
       font-family: 'Lato', sans-serif;
@@ -40,16 +42,10 @@
       justify-content: center;
     }
 
-    .container {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      padding: 20px;
+    @media (min-width: 641px) {
+      body { 
+        box-shadow: 0 0 40px rgba(0,0,0,0.15); 
+      }
     }
 
     /* Leaf decorations */
@@ -67,204 +63,189 @@
     .leaf.bl { bottom: 0; left: 0;  width: 50%; transform: rotate(180deg) scaleX(-1); }
     .leaf.br { bottom: 0; right: 0; width: 50%; transform: rotate(180deg); }
 
-    /* Envelope Wrapper */
-    .envelope-wrapper {
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+    }
+
+    /* Envelope Container */
+    .envelope-container {
       position: relative;
       width: 100%;
       max-width: 360px;
-      height: 280px;
+      height: 240px;
+      perspective: 1000px;
       cursor: pointer;
-      perspective: 1500px;
       margin-bottom: 40px;
     }
 
-    .envelope {
+    .envelope-3d {
       position: relative;
       width: 100%;
       height: 100%;
       transform-style: preserve-3d;
-      transition: transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
-    .envelope.opened {
-      transform: rotateX(-150deg);
+    .envelope-3d.opened {
+      transform: rotateX(-180deg);
     }
 
-    /* Envelope Body - Base Verde */
-    .envelope-body {
+    /* Envelope Front (Closed) */
+    .envelope-front {
       position: absolute;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #6b8f5e 0%, #768566 50%, #5d7a57 100%);
-      border-radius: 8px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+      background: linear-gradient(135deg, #5d7a57 0%, #768566 100%);
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), inset -2px -2px 5px rgba(0, 0, 0, 0.1);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      gap: 25px;
-      padding-bottom: 30px;
+      gap: 20px;
       backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      padding: 30px;
+      overflow: hidden;
     }
 
-    .envelope-body::before {
+    .envelope-front::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 100%);
-      border-radius: 8px;
+      background: linear-gradient(45deg, rgba(255,255,255,0.15) 0%, transparent 100%);
       pointer-events: none;
     }
 
-    /* Flap Superior */
+    /* Flap */
     .flap {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 50%;
-      background: linear-gradient(180deg, #768566 0%, #6b8f5e 100%);
+      top: 0;
+      left: 0;
+      background: linear-gradient(to bottom, #768566, #5d7a57);
       clip-path: polygon(0 0, 100% 0, 50% 100%);
       transform-origin: top center;
-      transform-style: preserve-3d;
-      transition: transform 0.8s ease-out 0.1s;
-      backface-visibility: hidden;
+      transition: transform 0.7s ease-out 0.1s;
+      transform: rotateX(0deg);
       z-index: 10;
-      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .envelope.opened .flap {
+    .envelope-3d.opened .flap {
       transform: rotateX(180deg);
     }
 
-    /* Sello Dorado */
-    .seal {
+    /* Seal */
+    .seal-wrapper {
       position: relative;
+      z-index: 15;
       width: 80px;
       height: 80px;
-      background: radial-gradient(circle at 35% 35%, #ffd966, #f4d03f 25%, #d4af37 60%, #c9a227 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: floatSeal 3s ease-in-out infinite;
+    }
+
+    .seal {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 35% 35%, #f4d03f, #d4af37 40%, #c9a227 80%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 44px;
-      box-shadow: 0 12px 32px rgba(212, 175, 55, 0.45),
-                  inset -2px -2px 8px rgba(0, 0, 0, 0.2),
-                  inset 1px 1px 3px rgba(255, 255, 255, 0.15);
+      font-size: 40px;
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.1);
       color: #2c2c2c;
       font-weight: bold;
-      z-index: 11;
-      animation: floatSeal 3s ease-in-out infinite;
     }
 
     @keyframes floatSeal {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
     }
 
-    /* Línea punteada */
-    .dashed-line {
-      position: relative;
-      width: 70%;
-      height: 1px;
-      background: repeating-linear-gradient(
-        90deg,
-        rgba(255,255,255,0.3),
-        rgba(255,255,255,0.3) 6px,
-        transparent 6px,
-        transparent 12px
-      );
-      z-index: 5;
-    }
-
-    /* Texto CTA */
+    /* CTA Text */
     .cta-text {
       position: relative;
+      z-index: 15;
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.8rem, 2.5vw, 0.95rem);
-      color: rgba(255,255,255,0.9);
-      letter-spacing: 0.25em;
+      font-size: clamp(0.85rem, 3vw, 1rem);
+      color: rgba(255,255,255,0.95);
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      white-space: nowrap;
       font-weight: 300;
-      z-index: 8;
     }
 
-    /* Carta Interior */
-    .letter {
+    /* Envelope Back (Content) */
+    .envelope-back {
       position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 320px;
+      width: 100%;
+      height: 100%;
       background: var(--cream);
-      border-radius: 6px;
-      padding: 40px 30px;
-      text-align: center;
+      border-radius: 12px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 15px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.7s ease-out 0.6s;
-      z-index: 3;
       backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: rotateX(180deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), inset 2px 2px 5px rgba(0, 0, 0, 0.05);
+      padding: 30px;
+      text-align: center;
+      flex-direction: column;
+      gap: 15px;
     }
 
-    .envelope.opened .letter {
-      opacity: 1;
-      visibility: visible;
-      top: -140px;
-    }
-
-    .letter h2 {
+    .envelope-back h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: var(--gold);
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: var(--green-dark);
       font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    .envelope-back p {
+      font-family: 'Luxurious Script', cursive;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: var(--gold);
+    }
+
+    .envelope-back .date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.75rem, 2vw, 0.9rem);
+      color: var(--text-mid);
       letter-spacing: 0.15em;
       text-transform: uppercase;
     }
 
-    .letter p {
-      font-family: 'Luxurious Script', cursive;
-      font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-      color: var(--green-dark);
-      margin: 3px 0;
-    }
-
-    .letter .date {
+    /* Subtitle below */
+    .subtitle-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       color: var(--text-mid);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-top: 12px;
+      margin-top: 20px;
+      letter-spacing: 0.1em;
     }
 
-    /* Subtitle */
-    .subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.85rem, 2.2vw, 1rem);
-      color: var(--text-mid);
-      letter-spacing: 0.08em;
-      text-align: center;
-    }
-
-    .subtitle strong {
+    .subtitle-text strong {
       color: var(--green-dark);
       font-weight: 600;
-    }
-
-    /* Hover effect */
-    .envelope-wrapper:hover {
-      transform: scale(1.03);
-      transition: transform 0.3s ease;
     }
 
     /* Loader */
@@ -295,15 +276,28 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Dashed decoration lines */
+    .dashed-lines {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.3) 20%, rgba(255,255,255,0.3) 80%, transparent);
+      background-size: 8px 100%;
+      z-index: 5;
+    }
+
     /* Responsive */
     @media (max-width: 640px) {
-      .envelope-wrapper {
+      .envelope-container {
         max-width: 300px;
-        height: 240px;
+        height: 200px;
       }
 
-      .letter {
-        padding: 30px 20px;
+      .envelope-front, .envelope-back {
+        padding: 20px;
       }
     }
   </style>
@@ -317,27 +311,24 @@
 
   <!-- Main Container -->
   <div class="container">
-    <!-- Envelope -->
-    <div class="envelope-wrapper" id="envelopeWrapper">
-      <div class="envelope" id="envelope">
+    <!-- Envelope 3D -->
+    <div class="envelope-container" id="envelopeContainer">
+      <div class="envelope-3d" id="envelope3d">
         
-        <!-- Envelope Body -->
-        <div class="envelope-body">
-          <!-- Seal -->
-          <div class="seal">✦</div>
+        <!-- FRONT (Closed Envelope) -->
+        <div class="envelope-front">
+          <div class="flap"></div>
+          <div class="dashed-lines"></div>
           
-          <!-- Dashed Line -->
-          <div class="dashed-line"></div>
+          <div class="seal-wrapper">
+            <div class="seal">✦</div>
+          </div>
           
-          <!-- CTA Text -->
-          <div class="cta-text">CLICK PARA ABRIR</div>
+          <div class="cta-text">CLICK PARA ABRIR LA INVITACIÓN</div>
         </div>
 
-        <!-- Top Flap -->
-        <div class="flap"></div>
-
-        <!-- Letter Inside -->
-        <div class="letter">
+        <!-- BACK (Inside) -->
+        <div class="envelope-back">
           <h2>NUESTRA BODA</h2>
           <p>Gabriela & Alejandro</p>
           <p class="date">24 - AGOSTO - 2025</p>
@@ -347,31 +338,47 @@
     </div>
 
     <!-- Subtitle -->
-    <p class="subtitle">Hemos reservado <strong>2</strong> lugares en su honor</p>
+    <p class="subtitle-text">Hemos reservado <strong>2</strong> lugares en su honor</p>
   </div>
 
-  <!-- Loader -->
+  <!-- Loading spinner -->
   <div class="loader" id="loader">
     <div class="spinner"></div>
   </div>
 
   <script>
-    const envelopeWrapper = document.getElementById('envelopeWrapper');
-    const envelope = document.getElementById('envelope');
+    const envelopeContainer = document.getElementById('envelopeContainer');
+    const envelope3d = document.getElementById('envelope3d');
     const loader = document.getElementById('loader');
     let isOpened = false;
 
+    // Redirect URL
     const redirectUrl = 'index.html';
 
-    envelopeWrapper.addEventListener('click', function() {
+    envelopeContainer.addEventListener('click', function(e) {
       if (!isOpened) {
         isOpened = true;
-        envelope.classList.add('opened');
+        envelope3d.classList.add('opened');
         loader.classList.add('show');
 
+        // Redirect after animation
         setTimeout(() => {
           window.location.href = redirectUrl;
-        }, 2200);
+        }, 1200);
+      }
+    });
+
+    // Add hover effect
+    envelopeContainer.addEventListener('mouseenter', function() {
+      if (!isOpened) {
+        envelopeContainer.style.transform = 'scale(1.03)';
+        envelopeContainer.style.transition = 'transform 0.3s ease';
+      }
+    });
+
+    envelopeContainer.addEventListener('mouseleave', function() {
+      if (!isOpened) {
+        envelopeContainer.style.transform = 'scale(1)';
       }
     });
   </script>
