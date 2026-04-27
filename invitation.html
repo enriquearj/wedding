@@ -69,107 +69,130 @@
     .leaf.bl { bottom: 0; left: 0;  width: 50%; transform: rotate(180deg) scaleX(-1); }
     .leaf.br { bottom: 0; right: 0; width: 50%; transform: rotate(180deg); }
 
-    /* Envelope Wrapper */
-    .envelope-wrapper {
+    /* 3D Envelope */
+    .envelope-container {
       position: relative;
       width: 100%;
-      max-width: 360px;
+      max-width: 380px;
       height: 240px;
-      cursor: pointer;
       margin-bottom: 40px;
+      cursor: pointer;
+      perspective: 1200px;
     }
 
-    /* Envelope Base */
-    .envelope {
+    .envelope-3d {
       position: relative;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #5d7a57 0%, #768566 100%);
-      border-radius: 8px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-      overflow: visible;
+      transform-style: preserve-3d;
+      transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
-    .envelope::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(45deg, rgba(255,255,255,0.15) 0%, transparent 100%);
-      border-radius: 8px;
-      pointer-events: none;
+    .envelope-3d.open {
+      transform: rotateX(-35deg) rotateZ(0deg);
     }
 
-    /* Envelope Bottom (Body) */
-    .envelope-body {
+    /* Envelope Back (trasera) */
+    .envelope-back {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #6b8f5e 0%, #768566 50%, #5d7a57 100%);
+      border-radius: 4px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    /* Envelope Body (frente cerrado) */
+    .envelope-front {
+      position: absolute;
       width: 100%;
       height: 55%;
-      background: linear-gradient(135deg, #5d7a57 0%, #768566 100%);
-      border-radius: 0 0 8px 8px;
+      bottom: 0;
+      background: linear-gradient(to bottom, #768566, #6b8f5e);
       z-index: 5;
+      border-radius: 0 0 4px 4px;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
-    /* Left Flap */
-    .flap-left {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(to right, #768566, #5d7a57);
-      clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
-      transform-origin: left center;
-      transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      z-index: 3;
-      box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .envelope-wrapper.opened .flap-left {
-      transform: rotateY(-120deg);
-    }
-
-    /* Right Flap */
-    .flap-right {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(to left, #768566, #5d7a57);
-      clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
-      transform-origin: right center;
-      transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      z-index: 3;
-      box-shadow: inset -2px 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .envelope-wrapper.opened .flap-right {
-      transform: rotateY(120deg);
-    }
-
-    /* Back Flap (solapa trasera) */
-    .flap-back {
+    /* Top Flap Container */
+    .flap-top {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 45%;
-      background: linear-gradient(to bottom, #768566, #5d7a57);
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      transform-origin: top center;
-      transition: transform 0.5s ease-out 0.2s;
-      z-index: 2;
-      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+      transform-style: preserve-3d;
     }
 
-    .envelope-wrapper.opened .flap-back {
+    /* Top Flap */
+    .flap-top-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #768566, #6b8f5e);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      transform-origin: top center;
+      transition: transform 0.6s ease-out;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.15);
+      border-radius: 4px 4px 0 0;
+    }
+
+    .envelope-3d.open .flap-top-content {
       transform: rotateX(180deg);
+    }
+
+    /* Left Triangle */
+    .flap-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 45%;
+      z-index: 8;
+      transform-style: preserve-3d;
+    }
+
+    .flap-left-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #6b8f5e 0%, #768566 100%);
+      clip-path: polygon(0 0, 100% 50%, 100% 100%, 0 100%);
+      transform-origin: left center;
+      transition: transform 0.7s ease-out 0.1s;
+      box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .envelope-3d.open .flap-left-content {
+      transform: rotateY(-150deg);
+    }
+
+    /* Right Triangle */
+    .flap-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 45%;
+      z-index: 8;
+      transform-style: preserve-3d;
+    }
+
+    .flap-right-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(225deg, #6b8f5e 0%, #768566 100%);
+      clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+      transform-origin: right center;
+      transition: transform 0.7s ease-out 0.1s;
+      box-shadow: inset -1px 1px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .envelope-3d.open .flap-right-content {
+      transform: rotateY(150deg);
     }
 
     /* Seal */
@@ -180,104 +203,115 @@
       transform: translate(-50%, -50%);
       width: 80px;
       height: 80px;
-      background: radial-gradient(circle at 35% 35%, #f4d03f, #d4af37 40%, #c9a227 80%);
+      background: radial-gradient(circle at 30% 30%, #ffd966, #f4d03f 20%, #d4af37 50%, #c9a227 80%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 40px;
-      box-shadow: 0 12px 28px rgba(212, 175, 55, 0.4), inset -2px -2px 5px rgba(0, 0, 0, 0.1);
+      font-size: 42px;
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5), 
+                  inset -3px -3px 8px rgba(0, 0, 0, 0.15),
+                  inset 2px 2px 5px rgba(255, 255, 255, 0.2);
       color: #2c2c2c;
       font-weight: bold;
-      z-index: 6;
+      z-index: 11;
       animation: floatSeal 3s ease-in-out infinite;
     }
 
     @keyframes floatSeal {
-      0%, 100% { transform: translate(-50%, -50%); }
-      50% { transform: translate(-50%, -58px); }
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -58px) scale(1.02); }
     }
 
-    /* CTA Text */
-    .cta-text {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.8rem, 2.5vw, 0.95rem);
-      color: rgba(255,255,255,0.95);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      z-index: 7;
-      white-space: nowrap;
-      font-weight: 300;
-    }
-
-    /* Letter Inside */
-    .letter {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.9);
-      width: 95%;
-      max-width: 340px;
-      height: 200px;
-      background: var(--cream);
-      border-radius: 6px;
-      padding: 30px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 15px;
-      z-index: 1;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      opacity: 0;
-      transition: opacity 0.4s ease 0.8s;
-    }
-
-    .envelope-wrapper.opened .letter {
-      opacity: 1;
-    }
-
-    .letter h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 3vw, 1.4rem);
-      color: var(--green-dark);
-      font-weight: 300;
-      letter-spacing: 0.1em;
-    }
-
-    .letter p {
-      font-family: 'Luxurious Script', cursive;
-      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-      color: var(--gold);
-      margin: 5px 0;
-    }
-
-    .letter .date {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.7rem, 1.8vw, 0.85rem);
-      color: var(--text-mid);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-top: 8px;
-    }
-
-    /* Dashed lines */
+    /* Dashed line decoration */
     .dashed-line {
       position: absolute;
       width: 70%;
       height: 1px;
       left: 50%;
       transform: translateX(-50%);
-      background: repeating-linear-gradient(to right, rgba(255,255,255,0.4) 0px, rgba(255,255,255,0.4) 4px, transparent 4px, transparent 8px);
+      background: repeating-linear-gradient(
+        to right,
+        rgba(255,255,255,0.4) 0px,
+        rgba(255,255,255,0.4) 5px,
+        transparent 5px,
+        transparent 10px
+      );
       z-index: 4;
     }
 
     .dashed-line-1 { bottom: 58%; }
     .dashed-line-2 { bottom: 28%; }
+
+    /* CTA Text */
+    .cta-text {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+      color: rgba(255,255,255,0.95);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      z-index: 7;
+      white-space: nowrap;
+      font-weight: 300;
+    }
+
+    /* Letter Content */
+    .letter {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 95%;
+      max-width: 340px;
+      background: white;
+      border-radius: 4px;
+      padding: 35px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      z-index: 3;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.6s ease-out 0.5s;
+    }
+
+    .envelope-3d.open .letter {
+      opacity: 1;
+      visibility: visible;
+      top: -120px;
+    }
+
+    .letter h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      color: var(--gold);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .letter p {
+      font-family: 'Luxurious Script', cursive;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      color: var(--green-dark);
+      margin: 3px 0;
+    }
+
+    .letter .date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+      color: var(--text-mid);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
 
     /* Subtitle */
     .subtitle-text {
@@ -285,11 +319,17 @@
       font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       color: var(--text-mid);
       letter-spacing: 0.1em;
+      animation: fadeIn 0.8s ease-out;
     }
 
     .subtitle-text strong {
       color: var(--green-dark);
       font-weight: 600;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* Loader */
@@ -322,14 +362,13 @@
 
     /* Responsive */
     @media (max-width: 640px) {
-      .envelope-wrapper {
-        max-width: 300px;
+      .envelope-container {
+        max-width: 320px;
         height: 200px;
       }
 
       .letter {
-        padding: 20px;
-        height: 180px;
+        padding: 25px;
       }
     }
   </style>
@@ -343,20 +382,30 @@
 
   <!-- Main Container -->
   <div class="container">
-    <!-- Envelope -->
-    <div class="envelope-wrapper" id="envelopeWrapper">
-      <div class="envelope">
-        <!-- Back Flap -->
-        <div class="flap-back"></div>
+    <!-- 3D Envelope -->
+    <div class="envelope-container" id="envelopeContainer">
+      <div class="envelope-3d" id="envelope3d">
+        
+        <!-- Back -->
+        <div class="envelope-back"></div>
 
-        <!-- Left Flap -->
-        <div class="flap-left"></div>
+        <!-- Front Body -->
+        <div class="envelope-front"></div>
 
-        <!-- Right Flap -->
-        <div class="flap-right"></div>
+        <!-- Top Flap -->
+        <div class="flap-top">
+          <div class="flap-top-content"></div>
+        </div>
 
-        <!-- Body -->
-        <div class="envelope-body"></div>
+        <!-- Left Triangle -->
+        <div class="flap-left">
+          <div class="flap-left-content"></div>
+        </div>
+
+        <!-- Right Triangle -->
+        <div class="flap-right">
+          <div class="flap-right-content"></div>
+        </div>
 
         <!-- Dashed Lines -->
         <div class="dashed-line dashed-line-1"></div>
@@ -368,12 +417,13 @@
         <!-- CTA Text -->
         <div class="cta-text">CLICK PARA ABRIR</div>
 
-        <!-- Letter Inside -->
+        <!-- Letter -->
         <div class="letter">
           <h2>NUESTRA BODA</h2>
           <p>Gabriela & Alejandro</p>
           <p class="date">24 - AGOSTO - 2025</p>
         </div>
+
       </div>
     </div>
 
@@ -387,37 +437,38 @@
   </div>
 
   <script>
-    const envelopeWrapper = document.getElementById('envelopeWrapper');
+    const envelopeContainer = document.getElementById('envelopeContainer');
+    const envelope3d = document.getElementById('envelope3d');
     const loader = document.getElementById('loader');
     let isOpened = false;
 
     // Redirect URL
     const redirectUrl = 'index.html';
 
-    envelopeWrapper.addEventListener('click', function() {
+    envelopeContainer.addEventListener('click', function() {
       if (!isOpened) {
         isOpened = true;
-        envelopeWrapper.classList.add('opened');
+        envelope3d.classList.add('open');
         loader.classList.add('show');
 
         // Redirect after animation
         setTimeout(() => {
           window.location.href = redirectUrl;
-        }, 2000);
+        }, 2200);
       }
     });
 
     // Add hover effect
-    envelopeWrapper.addEventListener('mouseenter', function() {
+    envelopeContainer.addEventListener('mouseenter', function() {
       if (!isOpened) {
-        envelopeWrapper.style.transform = 'scale(1.05)';
-        envelopeWrapper.style.transition = 'transform 0.3s ease';
+        envelopeContainer.style.transform = 'scale(1.04)';
+        envelopeContainer.style.transition = 'transform 0.3s ease';
       }
     });
 
-    envelopeWrapper.addEventListener('mouseleave', function() {
+    envelopeContainer.addEventListener('mouseleave', function() {
       if (!isOpened) {
-        envelopeWrapper.style.transform = 'scale(1)';
+        envelopeContainer.style.transform = 'scale(1)';
       }
     });
   </script>
