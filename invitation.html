@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación - Gabriela & Alejandro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&family=Luxurious+Script&family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    }
+
+    :root {
+      --cream:      #fafcf2;
+      --green-dark: #768566;
+      --green-mid:  #6b8f5e;
+      --gold:       #d4af37;
+      --text-dark:  #161515;
+      --text-mid:   #5a5a5a;
+    }
+
+    html { 
+      scroll-behavior: smooth; 
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      max-width: min(740px, 100%);
+      margin: 0 auto;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 641px) {
+      body { 
+        box-shadow: 0 0 40px rgba(0,0,0,0.15); 
+      }
+    }
+
+    /* Leaf decorations */
+    .leaf {
+      position: fixed;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      opacity: 0.92;
+      z-index: 0;
+      -webkit-mask-image: radial-gradient(ellipse at 0% 0%, black 30%, rgba(0,0,0,0.6) 52%, transparent 72%);
+      mask-image: radial-gradient(ellipse at 0% 0%, black 30%, rgba(0,0,0,0.6) 52%, transparent 72%);
+    }
+    .leaf.tl { top: 0; left: 0;  width: 56%; transform: none; }
+    .leaf.tr { top: 0; right: 0; width: 56%; transform: scaleX(-1); }
+    .leaf.bl { bottom: 0; left: 0;  width: 50%; transform: rotate(180deg) scaleX(-1); }
+    .leaf.br { bottom: 0; right: 0; width: 50%; transform: rotate(180deg); }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .envelope-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .title-section {
+      margin-bottom: 40px;
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    .title-section h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      color: var(--green-dark);
+      margin-bottom: 8px;
+      font-weight: 300;
+    }
+
+    .title-section p {
+      font-family: 'Luxurious Script', cursive;
+      font-size: clamp(1.8rem, 4vw, 2.2rem);
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      color: var(--text-mid);
+      margin-top: 12px;
+      letter-spacing: 0.15em;
+    }
+
+    /* Envelope Styles */
+    .envelope-wrapper {
+      perspective: 1000px;
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .envelope {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      transition: transform 0.6s ease;
+      transform-style: preserve-3d;
+    }
+
+    .envelope.opened {
+      animation: openEnvelope 0.8s ease-out forwards;
+    }
+
+    @keyframes openEnvelope {
+      0% {
+        transform: rotateX(0deg) scale(1);
+      }
+      50% {
+        transform: rotateX(-45deg) scale(1.05);
+      }
+      100% {
+        transform: rotateX(-90deg) scale(0.8);
+        opacity: 0;
+      }
+    }
+
+    /* Envelope Body */
+    .envelope-body {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #5d7a57 0%, #768566 100%);
+      border-radius: 8px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .envelope-body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Envelope Flap */
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(135deg, #768566 0%, #5d7a57 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      transition: transform 0.6s ease;
+      box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .envelope.opened .envelope-flap {
+      transform: rotateX(90deg);
+    }
+
+    /* Seal */
+    .seal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70px;
+      height: 70px;
+      background: radial-gradient(circle at 30% 30%, #f4d03f, #d4af37, #c9a227);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+      z-index: 10;
+      transition: all 0.4s ease;
+    }
+
+    .envelope.opened .seal {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+    }
+
+    .seal-icon {
+      filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1));
+    }
+
+    /* Dashed line decoration */
+    .dashed-line {
+      position: absolute;
+      bottom: 25%;
+      left: 50%;
+      width: 60%;
+      height: 2px;
+      transform: translateX(-50%);
+      stroke-dasharray: 8, 4;
+      opacity: 0.4;
+    }
+
+    /* CTA Text */
+    .cta-text {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.75rem, 2vw, 0.95rem);
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease 0.4s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Loading animation */
+    .loader {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+    }
+
+    .loader.show {
+      display: block;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(118, 133, 102, 0.2);
+      border-top: 4px solid var(--green-dark);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 60px;
+      }
+
+      .envelope-wrapper {
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Leaf decorations -->
+  <img class="leaf tl" src="img/leaves.png" alt="" />
+  <img class="leaf tr" src="img/leaves.png" alt="" />
+  <img class="leaf bl" src="img/leaves.png" alt="" />
+  <img class="leaf br" src="img/leaves.png" alt="" />
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Title Section -->
+    <div class="title-section">
+      <h1>Nuestra Boda</h1>
+      <p>Gabriela & Alejandro</p>
+      <p class="subtitle">24 - AGOSTO - 2025</p>
+    </div>
+
+    <!-- Envelope Section -->
+    <div class="envelope-section">
+      <!-- Envelope -->
+      <div class="envelope-wrapper" id="envelopeWrapper">
+        <div class="envelope" id="envelope">
+          <!-- Envelope Body -->
+          <div class="envelope-body">
+            <!-- Dashed line -->
+            <svg class="dashed-line" viewBox="0 0 100 2">
+              <line x1="0" y1="1" x2="100" y2="1" stroke="rgba(255,255,255,0.5)" stroke-width="0.5" stroke-dasharray="3,2" />
+            </svg>
+          </div>
+
+          <!-- Envelope Flap -->
+          <div class="envelope-flap"></div>
+
+          <!-- Seal -->
+          <div class="seal">
+            <span class="seal-icon">✦</span>
+          </div>
+
+          <!-- CTA Text -->
+          <div class="cta-text">CLICK PARA ABRIR LA INVITACIÓN</div>
+        </div>
+      </div>
+
+      <!-- Decoration Text Below -->
+      <p style="font-family: 'Cormorant Garamond', serif; color: var(--text-mid); font-size: clamp(0.9rem, 2.5vw, 1.1rem); margin-top: 30px; animation: fadeIn 1s ease 0.6s backwards;">
+        Hemos reservado <strong style="color: var(--green-dark);">2</strong> lugares en su honor
+      </p>
+    </div>
+  </div>
+
+  <!-- Loading spinner -->
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <script>
+    const envelopeWrapper = document.getElementById('envelopeWrapper');
+    const envelope = document.getElementById('envelope');
+    const loader = document.getElementById('loader');
+    let isOpened = false;
+
+    // Redirect URL - Cambiar a la URL deseada
+    const redirectUrl = 'index.html'; // Cambiar a: 'https://tudominio.com/invitacion-completa'
+
+    envelopeWrapper.addEventListener('click', function() {
+      if (!isOpened) {
+        isOpened = true;
+        envelope.classList.add('opened');
+        loader.classList.add('show');
+
+        // Redirect after animation
+        setTimeout(() => {
+          window.location.href = redirectUrl;
+        }, 800);
+      }
+    });
+
+    // Optional: Add hover effect hint
+    envelopeWrapper.addEventListener('mouseenter', function() {
+      if (!isOpened) {
+        envelopeWrapper.style.transform = 'scale(1.02)';
+      }
+    });
+
+    envelopeWrapper.addEventListener('mouseleave', function() {
+      if (!isOpened) {
+        envelopeWrapper.style.transform = 'scale(1)';
+      }
+    });
+  </script>
+</body>
+</html>
